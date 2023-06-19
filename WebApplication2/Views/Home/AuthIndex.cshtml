@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewData["Title"] = "AuthIndex";
+}
+
+<p class="fw-bold">Пользователь:  @ViewBag.Username</p>
+
+<form id="logoutForm" asp-controller="Home" asp-action="Logout" method="post">
+    <button type="submit" class="btn btn-primary">Выход из учетной записи</button>
+</form>
