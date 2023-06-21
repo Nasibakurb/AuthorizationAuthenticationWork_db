@@ -1,0 +1,53 @@
+﻿@model List<IpDateMidel>
+@{
+    ViewData["Title"] = "AuthIndex";
+}
+
+<p class="fw-bold">Пользователь:  @ViewBag.Username</p>
+
+<form id="logoutForm" asp-controller="Home" asp-action="Logout" method="post">
+    <button type="submit" class="btn btn-primary">Выход из учетной записи</button>
+</form>
+<br />
+
+<form asp-controller="Home" asp-action="Search" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label>IP:</label>
+        <input type="text" name="ip" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Дата:</label>
+        <input type="date" name="date" class="form-control" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-info">Поиск</button>
+    <button asp-controller="Home" asp-action="ResetFilter" type="submit" class="btn btn-info">Сбросить</button>
+</form>
+
+<br/>
+<div class="table-contener">
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>Дата</th>
+            <th>IP</th>
+            <th>ID пользователя</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Date.ToString("dd.MM.yyyy")</td>
+                <td>@item.ipAddress</td>
+                <td>@item.User_login_id</td>
+            </tr>
+        }
+    </tbody>
+ 
+</table>
+</div>
+
+
